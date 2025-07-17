@@ -25,9 +25,7 @@ const DropDown = ({
             className="relative inline-block"
             {...additionalProps}
         >
-            <a
-                className="px-4 py-2  hover:bg-gray-400 inline-block cursor-pointer"
-            >
+            <a className="px-4 py-2 hover:bg-gray-400 inline-block cursor-pointer">
                 Open menu
             </a>
             {isOpen && (
