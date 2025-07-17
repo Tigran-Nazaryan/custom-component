@@ -6,6 +6,7 @@ import Collapse from "./components/ColapsiblePanel/Collapse.jsx";
 import Tabs from "./components/Tabs/Tabs.jsx";
 import TabPanel from "./components/Tabs/TabPanel.jsx";
 import Spin from "./components/spin/Spin.jsx";
+import Modal from "./components/Modal/Modal.jsx";
 
 function App() {
 
@@ -61,7 +62,7 @@ function App() {
                     style={{flexDirection: 'column', height: '200px'}}
                 >
                 </Empty>
-                <Collapse size={"medium"} items={items} defaultActiveKeys={["1"]}/>
+                <Collapse size={"large"} items={items} defaultActiveKeys={["1"]}/>
                 <Tabs>
                     {tabItems.map((item, index) => (
                         <TabPanel key={index} label={item.label}>
@@ -74,6 +75,7 @@ function App() {
                     color="border-purple-500"
                     loading={false}
                 />
+                <Modal/>
             </div>
         </>
     );

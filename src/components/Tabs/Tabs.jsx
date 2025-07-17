@@ -28,5 +28,3 @@ const Tabs = ({children}) => {
 };
 
 export default Tabs;
-
-
