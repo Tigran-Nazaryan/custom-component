@@ -3,8 +3,9 @@ import MenuItem from "./components/DropDownMenu/MenuItem.jsx";
 import DropDown from "./components/DropDownMenu/DropDown.jsx";
 import Empty from "./components/Empty/Empty.jsx";
 import Collapse from "./components/ColapsiblePanel/Collapse.jsx";
-import Tabs from "./components/Modal/Tabs.jsx";
-import TabPanel from "./components/Modal/TabPanel.jsx";
+import Tabs from "./components/Tabs/Tabs.jsx";
+import TabPanel from "./components/Tabs/TabPanel.jsx";
+import Spin from "./components/spin/Spin.jsx";
 
 function App() {
 
@@ -68,8 +69,14 @@ function App() {
                         </TabPanel>
                     ))}
                 </Tabs>
+                <Spin
+                    size="large"
+                    color="border-purple-500"
+                    loading={false}
+                />
             </div>
         </>
     );
 }
+
 export default App;
