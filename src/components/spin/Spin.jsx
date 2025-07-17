@@ -5,13 +5,13 @@ const Spin = ({
     size = 'medium',
     title = "Loading",
     loading = true,
-    color = "#31890ff",
-    children,
+    color = "#31890f",
     className = '',
-    }) => {
-    if (!loading) return children || null;
+}) => {
+    if (!loading) return null;
 
     const spinnerStyle = getSpinnerStyle(size, color);
+
     return (
         <div className={className}>
             <div>

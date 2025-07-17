@@ -6,7 +6,7 @@ const Empty = ({description, img, children, style}) => {
     }
     return (
         <div style={{...defaultStyle, ...style}}>
-            {img && <div>{img}</div>}
+            {img ? <div>{img}</div> : null}
             {description && <div>{description}</div>}
             {children}
         </div>

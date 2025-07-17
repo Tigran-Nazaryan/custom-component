@@ -3,6 +3,7 @@ import {useState} from "react";
 const Tabs = ({children}) => {
     const [activeTab, setActiveTab] = useState(0);
 
+    // TODO: we don't need this loop
     const labels = children.map((child) => child.props.label);
 
     return (
