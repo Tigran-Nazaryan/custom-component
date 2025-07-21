@@ -1,31 +1,32 @@
-import {useState} from "react";
+import { useState } from "react";
 
-const Tabs = ({children}) => {
-    const [activeTab, setActiveTab] = useState(0);
+const Tabs = ({ items = [], defaultActiveKey = 0 }) => {
+  const [activeKey, setActiveKey] = useState(defaultActiveKey);
 
-    // TODO: we don't need this loop
-    const labels = children.map((child) => child.props.label);
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 8 }}>
+        {items.map((item, index) => (
+          <button
+            key={item.key || index}
+            onClick={() => setActiveKey(index)}
+            style={{
+              backgroundColor: index === activeKey ? "blue" : "lightgray",
+              color: index === activeKey ? "white" : "black",
+              padding: "8px 16px",
+              border: "none",
+              borderRadius: 4,
+              cursor: "pointer",
+            }}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
 
-    return (
-        <div className="mt-4">
-            <div className="flex gap-2 mb-4">
-                {labels.map((label, index) => (
-                    <button
-                        key={label}
-                        onClick={() => setActiveTab(index)}
-                        className={`px-4 py-2 rounded font-semibold transition 
-                        ${index === activeTab ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                    >
-                        {label}
-                    </button>
-                ))}
-            </div>
-
-            <div className="p-4 border rounded bg-gray-50">
-                {children[activeTab]}
-            </div>
-        </div>
-    );
+      <div style={{ marginTop: 16 }}>{items[activeKey]?.children}</div>
+    </div>
+  );
 };
 
 export default Tabs;
