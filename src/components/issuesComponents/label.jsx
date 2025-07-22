@@ -1,4 +1,4 @@
-const IssueLabel= ({ label, isSelected, onClick }) => {
+const IssueLabel = ({ label, isSelected, onClick }) => {
     return (
         <span
             onClick={() => onClick(label)}

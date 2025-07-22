@@ -21,12 +21,14 @@ const IssueContainer = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [issueToDelete, setIssueToDelete] = useState(null);
 
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const debouncedSetInputValue = useDebounce((val) => {
+    setSearchTerm(val);
+  }, 500);
 
   const { deleteIssue, editIssue, addIssue, searchIssues } = issuesUtils;
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value);
+    debouncedSetInputValue(e.target.value);
   };
 
   const handleCreateIssue = (newIssue) => {
@@ -49,7 +51,7 @@ const IssueContainer = () => {
     setEditingIssue(issue);
   };
 
-  const filteredIssues = searchIssues(issues, debouncedSearchTerm);
+  const filteredIssues = searchIssues(issues, searchTerm);
 
   const indexOfLastIssue = currentPage * issuesPerPage;
   const indexOfFirstIssue = indexOfLastIssue - issuesPerPage;
@@ -100,7 +102,6 @@ const IssueContainer = () => {
         <div className="flex justify-between items-stretch w-full">
           <input
             type="text"
-            value={searchTerm}
             onChange={handleChange}
             className="border-[1px] border-r-0 rounded-l-[5px] rounded-r-none border-gray-500 p-1 w-full"
           />

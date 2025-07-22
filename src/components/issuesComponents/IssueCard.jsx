@@ -7,6 +7,7 @@ export default function IssueCard({ issue, onEdit, onDelete, createdBy }) {
       </div>
       {issue.labels && issue.labels.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-2" key={issue.id}>
+          {/*// TODO: use IssueLabel component*/}
           {issue.labels.map((label) => (
             <span
               key={label.id}
