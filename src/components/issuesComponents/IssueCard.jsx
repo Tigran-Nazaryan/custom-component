@@ -1,5 +1,4 @@
-export default function IssueCard({issue, onEdit, onDelete}) {
-    console.log(issue);
+export default function IssueCard({issue, onEdit, onDelete, createdBy}) {
     return (
         <div
             className="border border-gray-300 rounded-md p-4 mb-4 shadow-sm grid grid-cols-3 gap-3 items-center">
@@ -17,25 +16,29 @@ export default function IssueCard({issue, onEdit, onDelete}) {
                                 backgroundColor: label.color,
                             }}
                         >
-              {label.name}
-            </span>
+                            {label.name}
+                        </span>
                     ))}
                 </div>
             )}
-            <div>
-                <button
-                    onClick={onEdit}
-                    className="mr-3 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition cursor-pointer"
-                >
-                    Edit
-                </button>
-                <button
-                    onClick={onDelete}
-                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition cursor-pointer"
-                >
-                    Delete
-                </button>
-            </div>
+            {
+                createdBy === issue.createdBy && (
+                    <div>
+                        <button
+                            onClick={onEdit}
+                            className="mr-3 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition cursor-pointer"
+                        >
+                            Edit
+                        </button>
+                        <button
+                            onClick={onDelete}
+                            className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition cursor-pointer"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                )
+            }
         </div>
     );
 }

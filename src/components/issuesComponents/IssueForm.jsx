@@ -17,8 +17,6 @@ const IssueForm = ({ labels, onCreate, onCancel, onSave, initialData }) => {
         }
     }, [initialData]);
 
-    console.log(labels, initialData)
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -75,10 +73,10 @@ const IssueForm = ({ labels, onCreate, onCancel, onSave, initialData }) => {
                         <span
                             key={label.name}
                             onClick={() => toggleLabel(label)}
-                            className={`text-white px-3 py-1 rounded cursor-pointer select-none ${
+                            className={`text-white px-3 py-1 rounded cursor-pointer select-none border-2 ${
                                 formData.selectedLabels.find(sl => sl.name === label.name)
-                                    ? "border-2 border-black"
-                                    : ""
+                                    ? "border-black"
+                                    : "border-transparent"
                             }`}
                             style={{ backgroundColor: label.color }}
                         >
@@ -89,13 +87,13 @@ const IssueForm = ({ labels, onCreate, onCancel, onSave, initialData }) => {
                 <div className="flex justify-end gap-3">
                     <button
                         onClick={handleSubmit}
-                        className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+                        className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition cursor-pointer"
                     >
                         {initialData ? "Save" : "Create"}
                     </button>
                     <button
                         onClick={onCancel}
-                        className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 transition"
+                        className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 transition cursor-pointer"
                     >
                         Cancel
                     </button>

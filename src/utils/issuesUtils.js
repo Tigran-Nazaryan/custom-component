@@ -1,5 +1,4 @@
 export function addIssue(issues, newIssue) {
-    console.log("newIssue", newIssue, issues);
     return [...issues, { id: Date.now(), ...newIssue }];
 }
 

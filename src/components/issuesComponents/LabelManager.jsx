@@ -91,7 +91,6 @@ export default function LabelManager({labels, setLabels}) {
                                     key={label.id}
                                     className="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer"
                                     onClick={() => {
-                                        console.log('Selected:', label);
                                         closeModal();
                                     }}
                                 >
