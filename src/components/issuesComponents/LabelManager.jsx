@@ -120,9 +120,6 @@ export default function LabelManager({ labels, setLabels }) {
                 <li
                   key={label.id}
                   className="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer"
-                  onClick={() => {
-                    closeModal();
-                  }}
                 >
                   <span
                     className="w-5 h-5 rounded-full"

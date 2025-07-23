@@ -30,10 +30,14 @@ const IssueForm = ({ labels, onCreate, onCancel, onSave, initialData }) => {
 
   const toggleLabel = (label) => {
     setFormData((prev) => {
-      const labels = prev.selectedLabels.find((sl) => sl.name === label.name)
-        ? prev.selectedLabels.filter((l) => l.name !== label.name)
+      const exists = prev.selectedLabels.some((sl) => sl.name === label.name);
+      const updated = exists
+        ? prev.selectedLabels.filter((sl) => sl.name !== label.name)
         : [...prev.selectedLabels, label];
-      return { ...prev, selectedLabels: labels };
+      return {
+        ...prev,
+        selectedLabels: updated,
+      };
     });
   };
 
@@ -106,6 +110,7 @@ const IssueForm = ({ labels, onCreate, onCancel, onSave, initialData }) => {
             <IssueLabel
               key={label.name}
               label={label}
+              isClickable={true}
               isSelected={formData.selectedLabels.some(
                 (sl) => sl.name === label.name,
               )}

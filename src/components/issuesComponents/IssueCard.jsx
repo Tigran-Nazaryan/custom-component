@@ -1,3 +1,5 @@
+import IssueLabel from "./label.jsx";
+
 export default function IssueCard({ issue, onEdit, onDelete, createdBy }) {
   return (
     <div className="border border-gray-300 rounded-md p-4 mb-4 shadow-sm grid grid-cols-3 gap-3 items-center">
@@ -7,17 +9,8 @@ export default function IssueCard({ issue, onEdit, onDelete, createdBy }) {
       </div>
       {issue.labels && issue.labels.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-2" key={issue.id}>
-          {/*// TODO: use IssueLabel component*/}
           {issue.labels.map((label) => (
-            <span
-              key={label.id}
-              className="text-white text-sm px-2 py-1 rounded"
-              style={{
-                backgroundColor: label.color,
-              }}
-            >
-              {label.name}
-            </span>
+              <IssueLabel key={label.id} label={label} isClickable={false}  />
           ))}
         </div>
       )}
